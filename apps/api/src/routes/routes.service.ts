@@ -17,7 +17,6 @@ export class RoutesService {
         createRouteDto.origin_id,
         createRouteDto.destination_id,
       );
-    console.log(available_travel_modes);
     const legs = routes[0].legs[0];
     return this.prismaService.route.create({
       data: {
@@ -51,11 +50,11 @@ export class RoutesService {
   }
 
   findAll() {
-    return `This action returns all routes`;
+    return this.prismaService.route.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} route`;
+  findOne(id: string) {
+    return this.prismaService.route.findUnique({ where: { id } });
   }
 
   update(id: number, updateRouteDto: UpdateRouteDto) {
