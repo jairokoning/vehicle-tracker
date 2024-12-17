@@ -1,0 +1,25 @@
+GET http://localhost:3333/places?text=Prefeitura municipal - Toledo PR
+
+###
+@originId=ChIJp-sFwLCc85QRIOjno01IscU
+@destinationId=ChIJcV73DImV85QRswlLluCgFNw
+###
+GET http://localhost:3333/directions?originId={{originId}}&destinationId={{destinationId}}
+
+###
+POST http://localhost:3333/routes
+Content-Type: application/json
+
+{
+  "name": "Rota - Novo Sarandi > Toledo",
+  "origin_id": "{{ originId }}",
+  "destination_id": "{{ destinationId }}"
+}
+
+###
+
+GET http://localhost:3333/routes
+
+###
+
+GET http://localhost:3333/routes/6760e2bf7d2f46dda23cbec9

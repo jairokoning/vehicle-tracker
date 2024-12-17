@@ -58,7 +58,7 @@ export class RoutesService {
   }
 
   update(id: number, updateRouteDto: UpdateRouteDto) {
-    return `This action updates a #${id} route`;
+    return `This action updates a #${id} ${updateRouteDto} route`;
   }
 
   remove(id: number) {
