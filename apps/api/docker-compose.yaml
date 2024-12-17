@@ -4,11 +4,14 @@ services:
     volumes:
       - .:/home/node/app
     ports:
-      - 3000:3000
+      - 3333:3333
   db:
     build: ./.docker/mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_PORT: 27017
+      MONGO_COMMAND: 'mongo'
     ports:
-      - 27017:27017
+      - '27017:27017'
