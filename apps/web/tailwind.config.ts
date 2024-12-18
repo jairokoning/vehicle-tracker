@@ -11,6 +11,8 @@ export default {
       colors: {
         default: '#282524',
         main: '#DCA35F',
+        error: "#f35759",
+        success: "#366912",
       },
       textColor: {
         primary: '#282524',
