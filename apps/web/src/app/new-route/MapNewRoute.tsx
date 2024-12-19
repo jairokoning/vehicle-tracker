@@ -12,7 +12,7 @@ export function MapNewRoute(props: MapNewRouteProps) {
   const { directionsData } = props;
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const map = useMap(mapContainerRef as RefObject<HTMLDivElement>);
-// 1:26
+
   useEffect(() => {
     if (!map || !directionsData) {
       return;
