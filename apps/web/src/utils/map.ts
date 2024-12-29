@@ -1,7 +1,6 @@
 import { sample, shuffle } from "lodash";
 import type { DirectionsResponseData } from "@googlemaps/google-maps-services-js";
 
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 export class Map {
   public map: google.maps.Map;
   private routes: { [routeId: string]: MapRoute } = {};
@@ -98,7 +97,7 @@ export class Map {
     endMarkerOptions: google.maps.marker.AdvancedMarkerElementOptions;
     carMarkerOptions: google.maps.marker.AdvancedMarkerElementOptions;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    directionsResponseData?: DirectionsResponseData & { request: unknown };
+    directionsResponseData?: DirectionsResponseData & { request: any };
   }) {
     if (routeOptions.routeId in this.routes) {
       throw new MapRouteExistsError();
@@ -134,7 +133,7 @@ export class Map {
       "icon"
     >;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    directionsResponseData?: DirectionsResponseData & { request: unknown };
+    directionsResponseData?: DirectionsResponseData & { request: any };
   }) {
     const color = sample(shuffle(colors)) as string;
     return this.addRoute({
@@ -158,7 +157,6 @@ export class Map {
   private fitBounds() {
     const bounds = new google.maps.LatLngBounds();
 
-    // biome-ignore lint/complexity/noForEach: <explanation>
     Object.keys(this.routes).forEach((id: string) => {
       const route = this.routes[id];
       bounds.extend(route.startMarker.position!);
@@ -185,7 +183,6 @@ export class Map {
   }
 
   removeAllRoutes() {
-    // biome-ignore lint/complexity/noForEach: <explanation>
     Object.keys(this.routes).forEach((id) => this.removeRoute(id));
   }
 
@@ -237,7 +234,7 @@ export class MapRoute {
 
   async calculateRoute(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    directionsResponseData?: DirectionsResponseData & { request: unknown }
+    directionsResponseData?: DirectionsResponseData & { request: any }
   ) {
     if (directionsResponseData) {
       const directionsResult = convertDirectionsResponseToDirectionsResult(
@@ -343,8 +340,7 @@ const colors = [
 
 function convertDirectionsResponseToDirectionsResult(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    directionsResponse: DirectionsResponseData & { request: any }
+  directionsResponse: DirectionsResponseData & { request: any }
 ): google.maps.DirectionsResult {
   const copy = { ...directionsResponse };
 

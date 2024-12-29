@@ -5,8 +5,8 @@ import { useMap } from "../../hooks/useMap";
 
 export function AdminPage() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  //useMap(mapContainerRef);
-  useMap(mapContainerRef as RefObject<HTMLDivElement>);
+  useMap(mapContainerRef);
+  //useMap(mapContainerRef as RefObject<HTMLDivElement>);
 
   return <div className="h-full w-full" ref={mapContainerRef} />;
 }
