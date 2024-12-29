@@ -34,7 +34,7 @@ export class DirectionsService {
           },
         },
         destination: {
-          place_id: requestParams.origin,
+          place_id: requestParams.destination,
           location: {
             lat: data.routes[0].legs[0].end_location.lat,
             lng: data.routes[0].legs[0].end_location.lng,
